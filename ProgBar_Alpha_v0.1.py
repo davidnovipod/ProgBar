@@ -87,9 +87,20 @@ lon3  = 0 # Working coordinate 3 longitude
 Tlat3 = 0 # Temp coordinate 3 latitude
 Tlon3 = 0 # Temp coordinate 3 longitude
 
+
+
 # Let's fill the variables
 def set_vars(lat1,lon1,lat2,lon2,lat3,lon3,Tlat3,Tlon3):
     # import stuff to variables here
+    # Open arduino file
+    arduino_file = open("mostrecentlog.txt", "r")
+    # Go to last (most recent) line
+    line = arduino_file.seek(0,2)
+    # print last line
+    print (line)
+
+    # Cut up arduino output and put into variables
+    
 
 # Run haversine() to get total distance
     print (haversine(lat1, lon1, lat2, lon2))
@@ -102,6 +113,9 @@ def run_check(lat3,lon3,Tlat3,Tlon3):
     else:
         # run our function with variable
         print (haversine(lat3, lon3, lat2, lon2))
+        # update temp varaibles with the current location
+        Tlat3 = lat3
+        Tlon3 = lon3
 
 
 
