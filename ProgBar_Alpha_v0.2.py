@@ -45,15 +45,16 @@ def haversine(lon1, lat1, lon2, lat2):
 
 
 # Let's define our start and end coordinates
-#lat1  = float(input('Please enter Start Point Latitude:')) # Working coordinate 1 latitude
-#lon1  = float(input('Please enter Start Point Longitude:')) # Working coordinate 1 longitude
-#lat2  = float(input('Please enter End Point Latitude:')) # Working coordinate 2 latitude
-#lon2  = float(input('Please enter End Point Longitude:')) # Working coordinate 2 longitude
-
+lat1  = float(input('Please enter Start Point Latitude:')) # Working coordinate 1 latitude
+lon1  = float(input('Please enter Start Point Longitude:')) # Working coordinate 1 longitude
+lat2  = float(input('Please enter End Point Latitude:')) # Working coordinate 2 latitude
+lon2  = float(input('Please enter End Point Longitude:')) # Working coordinate 2 longitude
+"""
 lat1  = 40.933456   # Working coordinate 1 latitude
 lon1  = -76.872849  # Working coordinate 1 longitude
 lat2  = 40.963580   # Working coordinate 2 latitude
 lon2  = -76.886541  # Working coordinate 2 longitude
+"""
 print (lat1)
 print (lon1)
 print (lat2)
@@ -87,19 +88,8 @@ def run_check(lat3,lon3,Tlat3,Tlon3):
 currentDis = totalDis
 while currentDis >= endTrigger:
     # Test code for manual variable change
-    #Tlat3 = float(input("Variable Point Latitude:")) # Temp coordinate 3 latitude
-    #Tlon3 = float(input("Variable Point Longitude:")) # Temp coordinate 3 longitude
-
-    ser = serial.Serial('/dev/cu.usbserial-DA01KZ3C', 115200) # Establish the connection on a specific port
-    
-    while (ser.inWaiting()==0): #Wait here until there is data
-        pass #do nothing
-    rawString = str(ser.readline())
-    String = rawString.replace('b','').replace('r','').replace('n','').replace('\\','').replace
-    locationArray = String.split(',')
-    lat3 = float( locationArray[0])
-    lon3 = float( locationArray[1])
-    print (lat3,lon3)
+    Tlat3 = float(input("Variable Point Latitude:")) # Temp coordinate 3 latitude
+    Tlon3 = float(input("Variable Point Longitude:")) # Temp coordinate 3 longitude
 
     # run our function with variable
     currentDis = haversine(Tlat3, Tlon3, lat2, lon2)
